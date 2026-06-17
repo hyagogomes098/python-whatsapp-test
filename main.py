@@ -9,7 +9,13 @@ key = os.getenv("SUPABASE_KEY")
 
 supabase = create_client(url, key)
 
-# teste simples: tenta pegar dados da tabela
-response = supabase.table("Contatos").select("*").execute()
+response = supabase.table("Contatos").select("*").limit(3).execute()
 
-print(response.data)
+def limpar_numero(numero):
+    return "".join(filter(str.isdigit, numero))
+
+for c in response.data:
+    nome = c["Nome"]
+    telefone = limpar_numero(c["Telefone"])
+
+    print(nome, telefone)
