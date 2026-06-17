@@ -18,4 +18,7 @@ for c in response.data:
     nome = c["Nome"]
     telefone = limpar_numero(c["Telefone"])
 
+    mensagem = f"Olá, {nome} tudo bem com você?"
+
     print(nome, telefone)
+    print(mensagem)
